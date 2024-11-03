@@ -86,9 +86,6 @@ You can implement HMM for recognizing gestures based on the sequence of key poin
 
 ## Reference
 - [MediaPipe Documentation](https://mediapipe.dev/) 
-
-# Translation and other improvements
-Nikita Kiselov(https://github.com/kinivi)
  
 # License 
 hand-gesture-recognition-using-mediapipe is under [Apache v2 license](LICENSE).
