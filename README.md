@@ -1,6 +1,6 @@
-# Hand Gesture Recognition with MediaPipe
+# Hand Gesture Recognition with MediaPipe Using Hidden Markov Models
 
-This project estimates hand poses using MediaPipe in Python. It recognizes hand signs and finger gestures using a simple Machine Learning Model with detected key points.
+This project estimates hand poses using MediaPipe in Python. It recognizes hand signs and finger gestures using a simple Machine Learning Model with detected key points, enhanced by Hidden Markov Models (HMM) to analyze gesture sequences.
 
 ![Hand Gesture Recognition Demo](https://user-images.githubusercontent.com/37477845/102222442-c452cd00-3f26-11eb-93ec-c387c98231be.gif)
 
@@ -81,8 +81,19 @@ You can collect and modify training data to retrain the models for hand sign and
 
 2. **Model Training**: Open `point_history_classification.ipynb` in Jupyter Notebook and run it from top to bottom. Change `NUM_CLASSES` if you add more classes and update `model/point_history_classifier/point_history_classifier_label.csv` as needed.
 
-## Hidden Markov Model (HMM)
-You can implement HMM for recognizing gestures based on the sequence of key points. This approach analyzes the temporal dynamics of hand movements to improve gesture recognition accuracy.
+## Hidden Markov Models (HMM) for Gesture Recognition
+In this project, we use Hidden Markov Models (HMM) to enhance the recognition of gestures over time. HMMs are particularly effective for modeling sequences of data where the states (in this case, hand gestures) are not directly observable. 
+
+### How HMM Works in This Context:
+1. **State Representation**: Each gesture is represented as a sequence of states corresponding to different key points detected by MediaPipe.
+2. **Observations**: The HMM receives observations from the captured key points in real-time, creating a dynamic model of the user's hand movements.
+3. **Training**: The model is trained using sequences of key point data collected during the gesture execution, allowing it to learn the typical transition probabilities between gestures.
+4. **Decoding**: During recognition, the model uses the Viterbi algorithm to find the most likely sequence of gestures based on the observed key points, making it robust against variations in speed and style of gesture execution.
+
+### Advantages of Using HMM
+- **Temporal Dynamics**: HMM captures the temporal dynamics of gestures, allowing it to distinguish between gestures that might have similar static positions.
+- **Robustness**: The model is less sensitive to noise in the data, which is common in real-time applications.
+- **Flexibility**: HMM can adapt to different gesture patterns over time, improving recognition accuracy as more data is collected.
 
 ## Reference
 - [MediaPipe Documentation](https://mediapipe.dev/) 
